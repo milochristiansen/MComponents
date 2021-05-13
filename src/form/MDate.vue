@@ -95,7 +95,7 @@ export default {
 				return;
 			}
 
-			let r = new Date(NaN)
+			let r = new Date(NaN);
 			this.validateValue = r;
 			this.$emit("update:modelValue", r);
 		}
@@ -108,7 +108,7 @@ export default {
 			// This is a special case because when a partial date is entered the model is set
 			// to an invalid date, aka NaN.
 			if (isNaN(this.modelValue)) {
-				return
+				return;
 			}
 
 			this.setvalue(this.modelValue);
