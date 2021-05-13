@@ -140,6 +140,8 @@ export default {
 
 		span {
 			margin: auto;
+			padding-left: 5px;
+			padding-right: 5px;
 		}
 
 		input {
