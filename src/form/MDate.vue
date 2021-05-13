@@ -95,13 +95,21 @@ export default {
 				return;
 			}
 
-			this.validateValue = new Date(NaN);
+			let r = new Date(NaN)
+			this.validateValue = r;
+			this.$emit("update:modelValue", r);
 		}
 	},
 
 	watch: {
 		modelValue() {
 			// DO NOT CALL storeAndEmit!
+
+			// This is a special case because when a partial date is entered the model is set
+			// to an invalid date, aka NaN.
+			if (isNaN(this.modelValue)) {
+				return
+			}
 
 			this.setvalue(this.modelValue);
 
@@ -245,8 +253,9 @@ export default {
 	line-height: 1;
 
 	.minput-mask {
-		font: monospace;
 		padding-right: 10px;
+		font-weight: 500;
+		color: lightgray;
 		background-color: transparent;
 		pointer-events: none;
 		z-index: -1;
@@ -263,7 +272,6 @@ export default {
 	}
 
 	input {
-		font: monospace;
 		background-color: transparent;
 		padding-right: 10px;
 		user-select: none;

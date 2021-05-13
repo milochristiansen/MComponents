@@ -193,8 +193,9 @@ export default {
 	line-height: 1;
 
 	.minput-mask {
-		font: monospace;
 		padding-right: 10px;
+		font-weight: 500;
+		color: lightgray;
 		background-color: transparent;
 		pointer-events: none;
 		z-index: -1;
@@ -211,7 +212,6 @@ export default {
 	}
 
 	input {
-		font: monospace;
 		background-color: transparent;
 		padding-right: 10px;
 		user-select: none;
