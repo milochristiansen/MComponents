@@ -3,7 +3,7 @@ import MCheckbox from "./MCheckbox.vue";
 import MDate from "./MDate.vue";
 import MFile from "./MFile.vue";
 import MNumber from "./MNumber.vue";
-import MRadio from "./MRadio.vue";
+import MPhone from "./MPhone.vue";
 import MSelect from "./MSelect.vue";
 import MText from "./MText.vue";
 
