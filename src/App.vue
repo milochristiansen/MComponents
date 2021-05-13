@@ -1,32 +1,32 @@
 <template>
 	<Form :submit="submit">
 		<MAddress v-model="valAddress" />
-		<p>{{ valAddress }}</p>
+		<p>&nbsp;{{ valAddress }}</p>
 		<hr />
 		<MCheckbox :rules="notempty" label="Yes or No?" v-model="valCheckbox" />
-		<p>{{ valCheckbox }}</p>
+		<p>&nbsp;{{ valCheckbox }}</p>
 		<hr />
 		<MDate :rules="notempty" label="Enter a Date" v-model="valDate" />
-		<p>{{ valDate }}</p>
+		<p>&nbsp;{{ valDate }}</p>
 		<hr />
 		<MFile :rules="notempty" label="Upload Something" v-model="valFile" />
-		<p>{{ valFile }}</p>
+		<p>&nbsp;{{ valFile }}</p>
 		<hr />
 		<MNumber :rules="notempty" label="Enter a Number" placeholder="123456567890" v-model="valNumber" />
-		<p>{{ valNumber }}</p>
+		<p>&nbsp;{{ valNumber }}</p>
 		<hr />
 		<MPhone :rules="notempty" label="Enter a Phone Number" v-model="valPhone" />
-		<p>{{ valPhone }}</p>
+		<p>&nbsp;{{ valPhone }}</p>
 		<hr />
 		<MSelect :rules="notempty" label="Pick an Option" v-model="valSelect">
 			<option value="a">A</option>
 			<option value="b">B</option>
 			<option value="c">C</option>
 		</MSelect>
-		<p>{{ valSelect }}</p>
+		<p>&nbsp;{{ valSelect }}</p>
 		<hr />
 		<MText :rules="notempty" label="Enter Some Text" placeholder="Some Text" v-model="valText" />
-		<p>{{ valText }}</p>
+		<p>&nbsp;{{ valText }}</p>
 		<hr />
 		<input type="submit" value="Trigger Submit" />
 
@@ -64,13 +64,13 @@ export default {
 
 	data: () => ({
 		valAddress: null,
-		valCheckbox: null,
-		valDate: null,
+		valCheckbox: null, // null, true, false
+		valDate: "",
 		valFile: null,
 		valNumber: null,
-		valPhone: null,
-		valSelect: null,
-		valText: null
+		valPhone: "",
+		valSelect: "", // Must be a the empty string or the label doesn't show properly.
+		valText: ""
 	}),
 
 	methods: {
