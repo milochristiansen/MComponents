@@ -1,3 +1,3 @@
-export { MSlider, MSliderItems } from "./slider";
+export { MSlider, MSliderItems } from "./misc";
 
 export { MAddress, MCheckbox, MDate, MFile, MNumber, MPhone, MSelect, MText } from "./form";
