@@ -120,12 +120,13 @@ export default {
 	border: 1px solid gray;
 	border-radius: 2px;
 
-	width: 100%;
+	width: calc(100% - 2px - 10px);
 
 	margin-top: 0.75rem;
 
 	padding: 2px;
 	padding-left: 5px;
+	padding-right: 5px;
 
 	label {
 		display: inline-flex;
