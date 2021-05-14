@@ -3,7 +3,7 @@ import { useField } from "vee-validate";
 import { nanoid } from "nanoid";
 
 export default {
-	name: "MNumber",
+	name: "MSelect",
 
 	props: {
 		name: {
@@ -16,10 +16,6 @@ export default {
 		label: {
 			type: String,
 			default: ""
-		},
-		placeholder: {
-			type: String,
-			default: " " // Not a typo!
 		},
 		value: {
 			default: undefined
