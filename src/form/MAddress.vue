@@ -2,6 +2,8 @@
 import MText from "./MText.vue";
 
 export default {
+	name: "MAddress",
+
 	components: {
 		MText
 	},
@@ -217,18 +219,18 @@ export default {
 		display: flex;
 		flex-direction: row;
 
-		.city {
+		.maddress-city {
 			flex: 8 2 auto;
 			min-width: 1em;
 		}
-		.state {
+		.maddress-state {
 			flex: 3 1 5em;
 			min-width: 1em;
 
 			margin-left: 5px;
 			margin-right: 5px;
 		}
-		.zip {
+		.maddress-zip {
 			flex: 4 2 8em;
 			min-width: 1em;
 		}
@@ -241,7 +243,7 @@ export default {
 		<div class="maddress-toprow">
 			<MText
 				type="address1"
-				class="fullrow"
+				class="maddress-line1"
 				label="Street Address"
 				placeholder="1234 S Main"
 				v-model="line1"
@@ -265,19 +267,39 @@ export default {
 			</datalist>
 		</div>
 
-		<MText type="address2" label="Line 2" placeholder="Apt. 5" v-model="line2" />
+		<MText
+			type="address2"
+			class="maddress-middlerow maddress-line2"
+			label="Line 2"
+			placeholder="Apt. 5"
+			v-model="line2"
+		/>
 
 		<div class="maddress-bottomrow">
-			<MText type="city" class="city" label="City" placeholder="Sometown" v-model="city" :rules="validateCity" />
+			<MText
+				type="city"
+				class="maddress-city"
+				label="City"
+				placeholder="Sometown"
+				v-model="city"
+				:rules="validateCity"
+			/>
 			<MText
 				type="state"
-				class="state"
+				class="maddress-state"
 				label="State"
 				placeholder="Somestate"
 				v-model="state"
 				:rules="validateState"
 			/>
-			<MText type="zip" class="zip" label="Zip" placeholder="1234567" v-model="zip" :rules="validateZip" />
+			<MText
+				type="zip"
+				class="maddress-zip"
+				label="Zip"
+				placeholder="1234567"
+				v-model="zip"
+				:rules="validateZip"
+			/>
 		</div>
 	</div>
 </template>
