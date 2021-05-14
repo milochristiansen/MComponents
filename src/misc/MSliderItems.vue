@@ -2,7 +2,7 @@
 import { h } from "vue";
 
 export default {
-	name: "Slider",
+	name: "MSliderItems",
 
 	props: {
 		to: {
@@ -62,7 +62,9 @@ export default {
 				return;
 			}
 
-			let cards = document.querySelector(".slider[" + this.$parent.$options.__scopeId + "] > .viewport > .cards");
+			let cards = document.querySelector(
+				".mslider[" + this.$parent.$options.__scopeId + "] > .mslider-viewport > .mslider-cards"
+			);
 			if (this.index == n) {
 				cards.style.transitionDuration = "0s";
 				cards.style.transform = `translate(-${(n + 1) * this.width}px)`;
@@ -81,12 +83,12 @@ export default {
 			}
 
 			let dots = document.querySelectorAll(
-				".slider[" + this.$parent.$options.__scopeId + "] > .slider-dots > button"
+				".mslider[" + this.$parent.$options.__scopeId + "] > .mslider-dots > button"
 			);
 			for (let i = 0; i < dots.length; i++) {
-				dots[i].className = dots[i].className.replace(" active", "");
+				dots[i].className = dots[i].className.replace(" mslider-active", "");
 			}
-			dots[n].className += " active";
+			dots[n].className += " mslider-active";
 
 			// If we are not adjacent to our target, then teleport directly to it.
 			if (!this.isadjacent(n, this.index, c)) {
@@ -122,7 +124,7 @@ export default {
 			return h(
 				"div",
 				{
-					class: "card",
+					class: "mslider-card",
 					[`${this.$options.__scopeId}`]: "",
 					style: this.cardStyle
 				},
@@ -136,13 +138,13 @@ export default {
 		return h(
 			"div",
 			{
-				class: "viewport",
+				class: "mslider-viewport",
 				[`${this.$options.__scopeId}`]: ""
 			},
 			h(
 				"div",
 				{
-					class: "cards",
+					class: "mslider-cards",
 					[`${this.$options.__scopeId}`]: "",
 					style: this.cardsStyle
 				},
@@ -162,10 +164,10 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.viewport {
+.mslider-viewport {
 	overflow: hidden;
 }
-.cards {
+.mslider-cards {
 	display: flex;
 	flex-direction: row;
 }

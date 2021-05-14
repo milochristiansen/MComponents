@@ -1,6 +1,6 @@
 <template>
-	<div class="slider">
-		<div class="slider-controls">
+	<div class="mslider">
+		<div class="mslider-controls">
 			<svg @click="prev(false)" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512">
 				<path
 					fill="currentColor"
@@ -16,23 +16,23 @@
 				></path>
 			</svg>
 		</div>
-		<SliderItems :to="to">
+		<MSliderItems :to="to">
 			<slot />
-		</SliderItems>
-		<div class="slider-dots">
+		</MSliderItems>
+		<div class="mslider-dots">
 			<button v-for="n in itemc" :key="n" @click="goto(n - 1)"></button>
 		</div>
 	</div>
 </template>
 
 <script>
-import SliderItems from "@/components/SliderItems.vue";
+import MSliderItems from "./MSliderItems.vue";
 
 export default {
-	name: "Slider",
+	name: "MSlider",
 
 	components: {
-		SliderItems
+		MSliderItems
 	},
 
 	props: {
@@ -68,7 +68,7 @@ export default {
 			}
 			// this.$options.__scopeId is *not documented*. This could break down the line.
 			let cards = document.querySelectorAll(
-				".slider[" + this.$options.__scopeId + "] > .viewport > .cards > .card"
+				".mslider[" + this.$options.__scopeId + "] > .mslider-viewport > .mslider-cards > .mslider-card"
 			);
 
 			if (cards.length == 0) {
@@ -123,7 +123,7 @@ export default {
 	}
 }
 
-.slider {
+.mslider {
 	position: relative;
 	display: flex;
 	flex-direction: column;
