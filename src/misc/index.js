@@ -1,4 +1,5 @@
+import MPagination from "./MPagination.vue";
 import MSlider from "./MSlider.vue";
 
-export default { MSlider };
-export { MSlider };
+export default { MPagination, MSlider };
+export { MPagination, MSlider };

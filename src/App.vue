@@ -33,6 +33,8 @@
 		<button @click="setvalue">Set</button>
 	</Form>
 	<hr />
+	<MPagination :current="6" :end="100" />
+	<hr />
 	<MSlider :speed="7000" :autoplay="true">
 		<div class="slide"><img src="http://placekitten.com/500/250" /></div>
 		<div class="slide"><img src="http://placekitten.com/501/250" /></div>
@@ -46,7 +48,7 @@ import { Form } from "vee-validate";
 
 import { MAddress, MCheckbox, MDate, MFile, MNumber, MPhone, MSelect, MText } from "./form";
 
-import { MSlider } from "./misc";
+import { MPagination, MSlider } from "./misc";
 
 /*
 TODO:
@@ -99,6 +101,7 @@ export default {
 		MSelect,
 		MText,
 
+		MPagination,
 		MSlider
 	},
 
