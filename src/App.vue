@@ -34,10 +34,10 @@
 	</Form>
 	<hr />
 	<MSlider :speed="7000" :autoplay="true">
-		<div><img src="http://placekitten.com/500/250" /></div>
-		<div><img src="http://placekitten.com/501/250" /></div>
-		<div><img src="http://placekitten.com/500/251" /></div>
-		<div><img src="http://placekitten.com/501/251" /></div>
+		<div class="slide"><img src="http://placekitten.com/500/250" /></div>
+		<div class="slide"><img src="http://placekitten.com/501/250" /></div>
+		<div class="slide"><img src="http://placekitten.com/500/251" /></div>
+		<div class="slide"><img src="http://placekitten.com/501/251" /></div>
 	</MSlider>
 </template>
 
@@ -145,5 +145,18 @@ hr {
 	border-bottom: 5px solid black;
 	border-left: none;
 	border-right: none;
+}
+
+.mslider {
+	width: 50%;
+	margin-left: auto;
+	margin-right: auto;
+	.slide {
+		display: flex;
+		img {
+			margin-left: auto;
+			margin-right: auto;
+		}
+	}
 }
 </style>
