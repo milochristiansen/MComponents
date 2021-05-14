@@ -32,19 +32,57 @@
 
 		<button @click="setvalue">Set</button>
 	</Form>
+	<hr />
+	<MSlider :speed="7000" :autoplay="true">
+		<div><img src="http://placekitten.com/500/250" /></div>
+		<div><img src="http://placekitten.com/501/250" /></div>
+		<div><img src="http://placekitten.com/500/251" /></div>
+		<div><img src="http://placekitten.com/501/251" /></div>
+	</MSlider>
 </template>
 
 <script>
 import { Form } from "vee-validate";
 
-import MAddress from "./form/MAddress.vue";
-import MCheckbox from "./form/MCheckbox.vue";
-import MDate from "./form/MDate.vue";
-import MFile from "./form/MFile.vue";
-import MNumber from "./form/MNumber.vue";
-import MPhone from "./form/MPhone.vue";
-import MSelect from "./form/MSelect.vue";
-import MText from "./form/MText.vue";
+import { MAddress, MCheckbox, MDate, MFile, MNumber, MPhone, MSelect, MText } from "./form";
+
+import { MSlider } from "./misc";
+
+/*
+TODO:
+
+Button? Maybe, maybe not. Buttons are pretty simple to do vanilla. Probably a good idea to at least provide a few styles for UI consistency. Possibly add things like icons or groups that visually run together.
+
+Dropdown, especially for auto-complete entry.
+
+Pagination controls.
+
+Multiple choice select. I saw a cool one that adds the selections as bubbles with individual remove buttons on the control, in a "tag list" kind-of thing. When you select an option is is removed from the list and turns into a bubble.
+
+Input sliders (input type=range).
+
+Tab and accordion containers
+
+Tool tips. Nice, big, easy-to-read ones.
+
+Checkboxes should probably be visually tweaked a bit. Sink the buttons into the control, square them up a bit,
+better default colors, etc. Maybe rethink the way the current box works?
+
+A loading spinner. Both as a stand alone sizable element and as a piece to use in other controls.
+
+A leaflet map control.
+
+Image container that shows a spinner while it is loading in instead of showing a partly loaded image.
+
+Path-style breadcrumb links
+
+Step displays (step 1, step 2, you are here kind of stuff, for sign up forms or whatever)
+
+Hideable page banners for user alerts.
+
+At some point we will want ad containers
+
+*/
 
 export default {
 	name: "App",
@@ -59,7 +97,9 @@ export default {
 		MNumber,
 		MPhone,
 		MSelect,
-		MText
+		MText,
+
+		MSlider
 	},
 
 	data: () => ({
@@ -101,6 +141,9 @@ export default {
 <style lang="scss">
 hr {
 	width: 100%;
-	border: 5px solid black;
+	border-top: 5px solid black;
+	border-bottom: 5px solid black;
+	border-left: none;
+	border-right: none;
 }
 </style>
