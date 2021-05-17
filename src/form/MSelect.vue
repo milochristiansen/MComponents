@@ -51,6 +51,14 @@ export default {
 		},
 		setdirty() {
 			this.meta.dirty = true;
+		},
+		setState() {
+			if (!this.$refs.select) {
+				// Sometimes this is called before the ref is fully valid. Nothing *seems*
+				// to break if you just bail in this case.
+				return;
+			}
+			this.$refs.select.dataset.chosen = this.modelValue;
 		}
 	},
 
@@ -58,6 +66,7 @@ export default {
 		modeldata: {
 			get() {
 				this.handleChange(this.modelValue);
+				this.setState();
 				return this.modelValue;
 			},
 			set(value) {
@@ -139,7 +148,7 @@ export default {
 			v-model="modeldata"
 			:class="valid"
 			data-chosen=""
-			onchange="this.dataset.chosen = this.value;"
+			ref="select"
 		>
 			<option value="" disabled hidden>{{ label }}</option>
 			<slot />
