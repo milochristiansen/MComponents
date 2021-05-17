@@ -12,6 +12,17 @@
 		<MFile :rules="notempty" label="Upload Something" v-model="valFile" />
 		<p>&nbsp;{{ valFile }}</p>
 		<hr />
+		<MMultiSelect
+			label="Select Multiple Somethings"
+			v-model="valMultiSelect"
+			:options="[
+				{ text: 'Option 1', value: '1' },
+				{ text: 'Option 2', value: '2' },
+				{ text: 'Option 3', value: '3' }
+			]"
+		/>
+		<p>&nbsp;{{ valMultiSelect }}</p>
+		<hr />
 		<MNumber :rules="notempty" label="Enter a Number" placeholder="123456567890" v-model="valNumber" />
 		<p>&nbsp;{{ valNumber }}</p>
 		<hr />
@@ -46,7 +57,7 @@
 <script>
 import { Form } from "vee-validate";
 
-import { MAddress, MCheckbox, MDate, MFile, MNumber, MPhone, MSelect, MText } from "./form";
+import { MAddress, MCheckbox, MDate, MFile, MMultiSelect, MNumber, MPhone, MSelect, MText } from "./form";
 
 import { MPagination, MSlider } from "./misc";
 
@@ -55,11 +66,7 @@ TODO:
 
 Button? Maybe, maybe not. Buttons are pretty simple to do vanilla. Probably a good idea to at least provide a few styles for UI consistency. Possibly add things like icons or groups that visually run together.
 
-Dropdown, especially for auto-complete entry.
-
-Pagination controls.
-
-Multiple choice select. I saw a cool one that adds the selections as bubbles with individual remove buttons on the control, in a "tag list" kind-of thing. When you select an option is is removed from the list and turns into a bubble.
+Dropdown, especially for auto-complete entry. An evolution of the existing multi-select?
 
 Input sliders (input type=range).
 
@@ -96,6 +103,7 @@ export default {
 		MCheckbox,
 		MDate,
 		MFile,
+		MMultiSelect,
 		MNumber,
 		MPhone,
 		MSelect,
@@ -110,6 +118,7 @@ export default {
 		valCheckbox: null, // null, true, false
 		valDate: "",
 		valFile: null,
+		valMultiSelect: null,
 		valNumber: null,
 		valPhone: "",
 		valSelect: "", // Must be a the empty string or the label doesn't show properly.
@@ -131,6 +140,7 @@ export default {
 			this.valCheckbox = true;
 			this.valDate = "2020-11-22";
 			this.valFile = null; // File inputs cannot have a value set.
+			this.valMultiSelect = ["2"];
 			this.valNumber = 1234;
 			this.valPhone = 1234567890;
 			this.valRadio = true;
