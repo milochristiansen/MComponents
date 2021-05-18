@@ -107,7 +107,7 @@ export default {
 
 			// This is a special case because when a partial date is entered the model is set
 			// to an invalid date, aka NaN.
-			if (isNaN(this.modelValue)) {
+			if (typeof this.modelValue == "number" && isNaN(this.modelValue)) {
 				return;
 			}
 
@@ -119,7 +119,8 @@ export default {
 				this.modelValue.length == 8 &&
 				this.modelValue.length.replace(/[^\d]/g, "") == 8
 			) {
-				this.storeAndEmit(this.modelValue);
+				this.datecode = this.modelValue;
+				this.updateMask(this.datecode);
 				return;
 			}
 
