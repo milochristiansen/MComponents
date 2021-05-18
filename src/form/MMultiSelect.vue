@@ -50,16 +50,6 @@ export default {
 	}),
 
 	computed: {
-		modeldata: {
-			get() {
-				this.handleChange(this.modelValue);
-				this.setStateFromModel();
-				return this.modelValue;
-			},
-			set(value) {
-				this.$emit("update:modelValue", value);
-			}
-		},
 		valid() {
 			return this.errorMessage === undefined
 				? "minput-element minput-element-valid"
@@ -67,6 +57,18 @@ export default {
 		},
 		selected() {
 			return this.options.filter(i => this.selOptions[i.value]);
+		}
+	},
+
+	watch: {
+		modelValue() {
+			this.handleChange(this.modelValue);
+
+			let v = [];
+			for (const i of this.modelValue) {
+				v[i] = true;
+			}
+			this.selOptions = v;
 		}
 	},
 
@@ -86,15 +88,10 @@ export default {
 			this.emitChanges();
 		},
 		emitChanges() {
-			this.modeldata = this.options.filter(i => this.selOptions[i.value]).map(i => i.value);
-		},
-		setStateFromModel() {
-			for (const i in this.selOptions) {
-				delete this.selOptions[i];
-			}
-			for (const i of this.modelValue) {
-				this.selOptions[i] = true;
-			}
+			this.$emit(
+				"update:modelValue",
+				this.options.filter(i => this.selOptions[i.value]).map(i => i.value)
+			);
 		}
 	},
 
