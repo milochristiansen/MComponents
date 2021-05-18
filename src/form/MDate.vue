@@ -107,7 +107,7 @@ export default {
 
 			// This is a special case because when a partial date is entered the model is set
 			// to an invalid date, aka NaN.
-			if (typeof this.modelValue == "number" && isNaN(this.modelValue)) {
+			if (this.modelValue instanceof Date && isNaN(this.modelValue)) {
 				return;
 			}
 
@@ -287,13 +287,10 @@ export default {
 
 <template>
 	<div class="mdate minput">
-		<span aria-hidden="true" class="minput-mask" ref="mask">
-			<i>{{ mask.entered }}</i>
-			{{ mask.shown }}
-		</span>
 		<span class="minput-error">&nbsp;{{ errorMessage }}</span>
 		<input
 			type="text"
+			inputmode="numeric"
 			:id="id"
 			:name="name"
 			@change="onInput"
@@ -304,9 +301,9 @@ export default {
 			maxlength="10"
 		/>
 		<label :for="id" class="minput-label minput-label-short">{{ label }}</label>
-		<span aria-hidden="true" class="minput-mask" ref="mask"
-			><i>{{ mask.entered }}</i
-			>{{ mask.shown }}</span
-		>
+		<span aria-hidden="true" class="minput-mask" ref="mask">
+			<i>{{ mask.entered }}</i>
+			{{ mask.shown }}
+		</span>
 	</div>
 </template>
