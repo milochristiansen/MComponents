@@ -47,6 +47,8 @@
 		<button @click="setvalue">Set</button>
 	</Form>
 	<hr />
+	<MLeafletMap />
+	<hr />
 	<MPagination :current="6" :end="100" />
 	<hr />
 	<MSlider :speed="7000" :autoplay="true">
@@ -62,7 +64,7 @@ import { Form } from "vee-validate";
 
 import { MAddress, MCheckbox, MDate, MFile, MMultiSelect, MNumber, MPhone, MRange, MSelect, MText } from "./form";
 
-import { MPagination, MSlider } from "./misc";
+import { MLeafletMap, MPagination, MSlider } from "./misc";
 
 /*
 TODO:
@@ -79,8 +81,6 @@ Checkboxes should probably be visually tweaked a bit. Sink the buttons into the 
 better default colors, etc. Maybe rethink the way the current box works?
 
 A loading spinner. Both as a stand alone sizable element and as a piece to use in other controls.
-
-A leaflet map control.
 
 Image container that shows a spinner while it is loading in instead of showing a partly loaded image.
 
@@ -111,6 +111,7 @@ export default {
 		MSelect,
 		MText,
 
+		MLeafletMap,
 		MPagination,
 		MSlider
 	},
