@@ -186,12 +186,40 @@ export default {
 	}
 
 	&-itembubble {
+		display: inline-block;
+
 		padding: 5px;
 		margin: 2px;
 		margin-right: 10px;
 
 		border: 1px solid black;
 		border-radius: 5px;
+
+		position: relative;
+
+		span {
+			display: inline-block;
+			padding-right: 8px;
+		}
+
+		button {
+			display: inline-block;
+
+			position: absolute;
+			right: 0;
+			top: 0;
+			bottom: 0;
+
+			background-color: transparent;
+
+			border: none;
+			border-left: solid 1px black;
+			border-radius: 5px;
+		}
+	}
+
+	&-placeholder {
+		white-space: nowrap;
 	}
 }
 </style>
@@ -206,11 +234,11 @@ export default {
 			{{ label }}
 		</label>
 		<div class="mmultiselect-body" @click.stop="toggle">
-			<span v-if="selected.length == 0" class="mmultiselect-placeholder">{{ label }}</span>
-			<span v-else v-for="item in selected" :key="item.text" class="mmultiselect-itembubble">
-				{{ item.text }}
+			<span v-if="selected.length == 0" class="minput-label minput-label-short">{{ label }}</span>
+			<div v-else v-for="item in selected" :key="item.text" class="mmultiselect-itembubble">
+				<span>{{ item.text }}</span>
 				<button @click.stop="select(item)">x</button>
-			</span>
+			</div>
 			<span v-if="selected.length != 0" class="mmultiselect-placeholder">{{ placeholder }}</span>
 		</div>
 		<div :class="focused ? 'mmultiselect-dropdown mmultiselect-focused' : 'mmultiselect-dropdown'">
