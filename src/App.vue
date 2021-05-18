@@ -29,7 +29,7 @@
 		<MPhone :rules="notempty" label="Enter a Phone Number" v-model="valPhone" />
 		<p>&nbsp;{{ valPhone }}</p>
 		<hr />
-		<MRange :rules="notempty" label="Select a Number" v-model="valRange" />
+		<MRange :rules="notempty" label="Select a Number" v-model="valRange" :list="[2, 4, { k: '50%', v: 5 }, 6, 8]" />
 		<p>&nbsp;{{ valRange }}</p>
 		<hr />
 		<MSelect :rules="notempty" label="Pick an Option" v-model="valSelect">

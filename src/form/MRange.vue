@@ -17,8 +17,23 @@ export default {
 			type: String,
 			default: ""
 		},
-		value: {
-			default: undefined
+		min: {
+			type: Number,
+			default: 1
+		},
+		max: {
+			type: Number,
+			default: 10
+		},
+		step: {
+			type: Number,
+			default: 1
+		},
+		list: {
+			// Elements may be a bare number or an object with "k" and "v" keys for the label and value.
+			// Note that no browser proper supports labels yet.
+			type: Array,
+			default: null
 		},
 		modelValue: {
 			default: ""
@@ -27,6 +42,7 @@ export default {
 
 	setup(props) {
 		let id = nanoid(5);
+		let listid = nanoid(5);
 
 		const { value, errorMessage, handleChange } = useField(id, props.rules || (() => true), {
 			initialValue: props.modelValue,
@@ -35,6 +51,7 @@ export default {
 
 		return {
 			id,
+			listid,
 			errorMessage,
 			handleChange,
 			validateValue: value
@@ -115,7 +132,22 @@ export default {
 <template>
 	<div class="mrange minput">
 		<label :for="id" class="minput-label minput-label-short">{{ label }}</label>
-		<input type="range" :id="id" :name="name" @change="onInput" @blur="onBlur" v-model="modeldata" :class="valid" />
+		<input
+			type="range"
+			:id="id"
+			:name="name"
+			@change="onInput"
+			@blur="onBlur"
+			v-model="modeldata"
+			:class="valid"
+			:min="min"
+			:max="max"
+			:step="step"
+			:list="listid"
+		/>
+		<datalist v-if="list" :id="listid">
+			<option v-for="i in list" :key="i.v ? i.v : i" :value="i.v ? i.v : i" :label="i.k ? i.k : ''"></option>
+		</datalist>
 		<span class="minput-error">&nbsp;{{ errorMessage }}</span>
 	</div>
 </template>
