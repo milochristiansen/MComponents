@@ -89,7 +89,7 @@ export default {
 				let d = v.slice(2, 4);
 				let y = v.slice(4);
 
-				let r = new Date(y, m, d);
+				let r = new Date(y, Number(m) - 1, d);
 				this.validateValue = r;
 				this.$emit("update:modelValue", r);
 				return;
