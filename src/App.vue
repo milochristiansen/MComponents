@@ -29,6 +29,9 @@
 		<MPhone :rules="notempty" label="Enter a Phone Number" v-model="valPhone" />
 		<p>&nbsp;{{ valPhone }}</p>
 		<hr />
+		<MRange :rules="notempty" label="Select a Number" v-model="valRange" />
+		<p>&nbsp;{{ valRange }}</p>
+		<hr />
 		<MSelect :rules="notempty" label="Pick an Option" v-model="valSelect">
 			<option value="a">A</option>
 			<option value="b">B</option>
@@ -57,7 +60,7 @@
 <script>
 import { Form } from "vee-validate";
 
-import { MAddress, MCheckbox, MDate, MFile, MMultiSelect, MNumber, MPhone, MSelect, MText } from "./form";
+import { MAddress, MCheckbox, MDate, MFile, MMultiSelect, MNumber, MPhone, MRange, MSelect, MText } from "./form";
 
 import { MPagination, MSlider } from "./misc";
 
@@ -67,8 +70,6 @@ TODO:
 Button? Maybe, maybe not. Buttons are pretty simple to do vanilla. Probably a good idea to at least provide a few styles for UI consistency. Possibly add things like icons or groups that visually run together.
 
 Dropdown, especially for auto-complete entry. An evolution of the existing multi-select?
-
-Input sliders (input type=range).
 
 Tab and accordion containers
 
@@ -106,6 +107,7 @@ export default {
 		MMultiSelect,
 		MNumber,
 		MPhone,
+		MRange,
 		MSelect,
 		MText,
 
@@ -121,6 +123,7 @@ export default {
 		valMultiSelect: null,
 		valNumber: null,
 		valPhone: "",
+		valRange: 0,
 		valSelect: "", // Must be a the empty string or the label doesn't show properly.
 		valText: ""
 	}),
@@ -143,6 +146,7 @@ export default {
 			this.valMultiSelect = ["2"];
 			this.valNumber = 1234;
 			this.valPhone = 1234567890;
+			this.valRange = 5;
 			this.valRadio = true;
 			this.valSelect = "b";
 			this.valText = "test text";

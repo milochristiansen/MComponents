@@ -5,8 +5,9 @@ import MFile from "./MFile.vue";
 import MMultiSelect from "./MMultiSelect.vue";
 import MNumber from "./MNumber.vue";
 import MPhone from "./MPhone.vue";
+import MRange from "./MRange.vue";
 import MSelect from "./MSelect.vue";
 import MText from "./MText.vue";
 
-export default { MAddress, MCheckbox, MDate, MFile, MMultiSelect, MNumber, MPhone, MSelect, MText };
-export { MAddress, MCheckbox, MDate, MFile, MMultiSelect, MNumber, MPhone, MSelect, MText };
+export default { MAddress, MCheckbox, MDate, MFile, MMultiSelect, MNumber, MPhone, MRange, MSelect, MText };
+export { MAddress, MCheckbox, MDate, MFile, MMultiSelect, MNumber, MPhone, MRange, MSelect, MText };
