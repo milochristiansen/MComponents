@@ -57,6 +57,25 @@
 		<div class="slide"><img src="http://placekitten.com/500/251" /></div>
 		<div class="slide"><img src="http://placekitten.com/501/251" /></div>
 	</MSlider>
+	<hr />
+	<MTabs>
+		<template #labels>
+			<span>1</span>
+			<span>2</span>
+			<span>3</span>
+		</template>
+		<template #tabs>
+			<div>
+				<p>Page 1</p>
+			</div>
+			<div>
+				<p>Page 2</p>
+			</div>
+			<div>
+				<p>Page 3</p>
+			</div>
+		</template>
+	</MTabs>
 </template>
 
 <script>
@@ -64,7 +83,7 @@ import { Form } from "vee-validate";
 
 import { MAddress, MCheckbox, MDate, MFile, MMultiSelect, MNumber, MPhone, MRange, MSelect, MText } from "./form";
 
-import { MLeafletMap, MPagination, MSlider } from "./misc";
+import { MLeafletMap, MPagination, MSlider, MTabs } from "./misc";
 
 /*
 TODO:
@@ -72,8 +91,6 @@ TODO:
 Button? Maybe, maybe not. Buttons are pretty simple to do vanilla. Probably a good idea to at least provide a few styles for UI consistency. Possibly add things like icons or groups that visually run together.
 
 Dropdown, especially for auto-complete entry. An evolution of the existing multi-select?
-
-Tab and accordion containers
 
 Tool tips. Nice, big, easy-to-read ones.
 
@@ -113,7 +130,8 @@ export default {
 
 		MLeafletMap,
 		MPagination,
-		MSlider
+		MSlider,
+		MTabs
 	},
 
 	data: () => ({
