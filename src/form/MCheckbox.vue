@@ -91,6 +91,11 @@ export default {
 </script>
 
 <style scoped lang="scss">
+.mcheckbox {
+	display: flex;
+	flex-direction: column;
+}
+
 .minput-element {
 	display: flex;
 	flex-direction: row;
