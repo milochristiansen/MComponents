@@ -94,9 +94,6 @@ Dropdown, especially for auto-complete entry. An evolution of the existing multi
 
 Tool tips. Nice, big, easy-to-read ones.
 
-Checkboxes should probably be visually tweaked a bit. Sink the buttons into the control, square them up a bit,
-better default colors, etc. Maybe rethink the way the current box works?
-
 A loading spinner. Both as a stand alone sizable element and as a piece to use in other controls.
 
 Image container that shows a spinner while it is loading in instead of showing a partly loaded image.
