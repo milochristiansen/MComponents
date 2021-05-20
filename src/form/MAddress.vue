@@ -170,12 +170,6 @@ export default {
 			}
 			return true;
 		},
-		notempty(value) {
-			if (value === "") {
-				return "Value must be provided.";
-			}
-			return true;
-		},
 		emitValues() {
 			this.$emit("update:modelValue", {
 				line1: String(this.nr_line1),

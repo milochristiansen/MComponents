@@ -13,6 +13,7 @@
 		<p>&nbsp;{{ valFile }}</p>
 		<hr />
 		<MMultiSelect
+			:rules="notempty"
 			label="Select Multiple Somethings"
 			v-model="valMultiSelect"
 			:options="[

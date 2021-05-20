@@ -92,6 +92,34 @@ export default {
 </script>
 
 <style scoped lang="scss">
+.mrange {
+	display: flex;
+	flex-direction: column;
+}
+
+.minput-element {
+	font-size: 1rem;
+	cursor: pointer;
+
+	margin: 0;
+
+	/* Takes up space, however it doesn't actually display.
+	For now I'm not wasting time figuring out what is wrong with it. */
+	border: 1px solid black;
+	border-radius: 2px;
+
+	&::placeholder {
+		opacity: 0;
+		transition: inherit;
+	}
+}
+
+.minput-label {
+	padding-left: 5px;
+	font-size: 0.75rem;
+	width: 66.66%;
+}
+
 .minput-element-invalid {
 	border-color: red;
 }
@@ -104,34 +132,11 @@ export default {
 	overflow: hidden;
 	text-overflow: ellipsis;
 }
-
-.mrange {
-	display: flex;
-	flex-direction: column;
-
-	input {
-		font-size: 1rem;
-		cursor: pointer;
-
-		margin: 0;
-
-		&::placeholder {
-			opacity: 0;
-			transition: inherit;
-		}
-	}
-
-	label {
-		padding-left: 5px;
-		font-size: 0.75rem;
-		width: 66.66%;
-	}
-}
 </style>
 
 <template>
 	<div class="mrange minput">
-		<label :for="id" class="minput-label minput-label-short">{{ label }}</label>
+		<label :for="id" class="minput-label">{{ label }}</label>
 		<input
 			type="range"
 			:id="id"

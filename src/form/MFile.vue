@@ -103,6 +103,48 @@ export default {
 </script>
 
 <style scoped lang="scss">
+.mfile {
+	border: 1px solid gray;
+	border-radius: 2px;
+
+	width: calc(100% - 2px - 10px);
+
+	margin-top: 0.75rem;
+
+	padding: 2px;
+	padding-left: 5px;
+	padding-right: 5px;
+}
+
+.minput-element {
+	display: inline-flex;
+	position: relative;
+
+	border: 1px dashed black;
+	padding-top: 1rem;
+	padding-bottom: 1rem;
+	width: calc(100% - 20px);
+	margin: 10px;
+	margin-bottom: 0;
+
+	span {
+		margin: auto;
+		padding-left: 5px;
+		padding-right: 5px;
+	}
+
+	input {
+		position: absolute;
+		top: 0;
+		left: 0;
+		bottom: 0;
+		width: 100%;
+		opacity: 0;
+
+		cursor: pointer;
+	}
+}
+
 .minput-element-invalid {
 	border-color: red;
 }
@@ -115,54 +157,12 @@ export default {
 	overflow: hidden;
 	text-overflow: ellipsis;
 }
-
-.mfile {
-	border: 1px solid gray;
-	border-radius: 2px;
-
-	width: calc(100% - 2px - 10px);
-
-	margin-top: 0.75rem;
-
-	padding: 2px;
-	padding-left: 5px;
-	padding-right: 5px;
-
-	label {
-		display: inline-flex;
-		position: relative;
-
-		border: 1px dashed black;
-		padding-top: 1rem;
-		padding-bottom: 1rem;
-		width: calc(100% - 20px);
-		margin: 10px;
-		margin-bottom: 0;
-
-		span {
-			margin: auto;
-			padding-left: 5px;
-			padding-right: 5px;
-		}
-
-		input {
-			position: absolute;
-			top: 0;
-			left: 0;
-			bottom: 0;
-			width: 100%;
-			opacity: 0;
-
-			cursor: pointer;
-		}
-	}
-}
 </style>
 
 <template>
 	<div class="mfile minput">
-		<span class="minput-label minput-label-long">{{ label }}</span>
-		<label :for="id">
+		<span class="minput-label">{{ label }}</span>
+		<label :for="id" :class="valid">
 			<span v-html="statustext"></span>
 
 			<!-- File inputs are readonly from JS, so no v-model -->
@@ -172,7 +172,6 @@ export default {
 				:name="name"
 				@change="onInput"
 				@blur="onBlur"
-				:class="valid"
 				:accept="accept"
 				:multiple="multiple"
 			/>

@@ -107,19 +107,6 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.minput-element-invalid {
-	border-color: red;
-}
-
-.minput-error {
-	font-size: 0.75rem;
-	color: red;
-
-	white-space: nowrap;
-	overflow: hidden;
-	text-overflow: ellipsis;
-}
-
 .mmultiselect {
 	display: flex;
 	flex-direction: column;
@@ -193,7 +180,7 @@ export default {
 		margin-right: 10px;
 
 		border: 1px solid black;
-		border-radius: 5px;
+		border-radius: 2px;
 
 		position: relative;
 
@@ -222,19 +209,29 @@ export default {
 		white-space: nowrap;
 	}
 }
+
+.minput-element-invalid {
+	border-color: red;
+}
+
+.minput-error {
+	font-size: 0.75rem;
+	color: red;
+
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
 </style>
 
 <template>
 	<div class="mmultiselect minput">
 		<!-- Multi-Select -->
-		<label
-			:for="id"
-			:class="'minput-label minput-label-short' + (selected.length != 0 ? ' mmultiselect-show' : '')"
-		>
+		<label :for="id" :class="'minput-label' + (selected.length != 0 ? ' mmultiselect-show' : '')">
 			{{ label }}
 		</label>
-		<div class="mmultiselect-body" @click.stop="toggle">
-			<span v-if="selected.length == 0" class="minput-label minput-label-short">{{ label }}</span>
+		<div :class="'mmultiselect-body ' + valid" @click.stop="toggle">
+			<span v-if="selected.length == 0" class="minput-label">{{ label }}</span>
 			<div v-else v-for="item in selected" :key="item.text" class="mmultiselect-itembubble">
 				<span>{{ item.text }}</span>
 				<button @click.stop="select(item)">x</button>

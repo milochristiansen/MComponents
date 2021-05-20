@@ -85,6 +85,52 @@ export default {
 </script>
 
 <style scoped lang="scss">
+.mselect {
+	display: flex;
+	flex-flow: column-reverse;
+}
+
+.minput-element {
+	font-size: 1rem;
+	cursor: pointer;
+
+	border-radius: 2px;
+
+	padding: 10px;
+	padding-left: 5px;
+
+	background-color: transparent;
+
+	&[data-chosen=""] {
+		padding-left: 2px;
+	}
+}
+
+.minput-element:focus {
+	outline: 0;
+}
+
+.minput-label {
+	padding-left: 5px;
+	font-size: 0.75rem;
+	width: 66.66%;
+}
+
+.minput-element[data-chosen=""] + .minput-label {
+	cursor: text;
+
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+
+	visibility: hidden;
+}
+
+.minput-element:not([data-chosen=""]) + .minput-label,
+.minput-element:focus + .minput-label {
+	cursor: pointer;
+}
+
 .minput-element-invalid {
 	border-color: red;
 }
@@ -96,43 +142,6 @@ export default {
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
-}
-
-.mselect {
-	display: flex;
-	flex-flow: column-reverse;
-
-	select {
-		font-size: 1rem;
-		cursor: pointer;
-
-		padding: 10px;
-	}
-
-	select:focus {
-		outline: 0;
-	}
-
-	label {
-		padding-left: 5px;
-		font-size: 0.75rem;
-		width: 66.66%;
-	}
-
-	select[data-chosen=""] + label {
-		cursor: text;
-
-		white-space: nowrap;
-		overflow: hidden;
-		text-overflow: ellipsis;
-
-		visibility: hidden;
-	}
-
-	select:not([data-chosen=""]) + label,
-	select:focus + label {
-		cursor: pointer;
-	}
 }
 </style>
 
@@ -153,6 +162,6 @@ export default {
 			<option value="" disabled hidden>{{ label }}</option>
 			<slot />
 		</select>
-		<label :for="id" class="minput-label minput-label-short">{{ label }}</label>
+		<label :for="id" class="minput-label">{{ label }}</label>
 	</div>
 </template>

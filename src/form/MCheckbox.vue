@@ -91,20 +91,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.minput-element-invalid {
-	border-color: red;
-}
-
-.minput-error {
-	font-size: 0.75rem;
-	color: red;
-
-	white-space: nowrap;
-	overflow: hidden;
-	text-overflow: ellipsis;
-}
-
-.mcheckbox .minput-element {
+.minput-element {
 	display: flex;
 	flex-direction: row;
 
@@ -118,47 +105,6 @@ export default {
 	padding-right: 5px;
 	margin-top: 0.75rem;
 
-	.mcheckbox-thumb {
-		position: relative;
-
-		margin-left: auto;
-		cursor: pointer;
-
-		width: 50px;
-
-		border: 1px solid black;
-		border-radius: 0.5rem;
-
-		transition: 0.4s;
-
-		background-color: red;
-
-		&:before {
-			position: absolute;
-
-			border-radius: 50%;
-			background-color: white;
-
-			content: "";
-
-			top: 4px;
-			left: 4px;
-			bottom: 4px;
-			width: 10px;
-		}
-	}
-
-	input:checked + .mcheckbox-thumb {
-		background-color: green;
-
-		&:before {
-			transform: translateX(calc(50px - 1.1rem));
-		}
-	}
-	input:indeterminate + .mcheckbox-thumb {
-		background-color: gray;
-	}
-
 	input {
 		width: 0;
 		height: 0;
@@ -168,12 +114,67 @@ export default {
 		position: absolute;
 	}
 }
+
+.mcheckbox-thumb {
+	position: relative;
+
+	margin-left: auto;
+	cursor: pointer;
+
+	width: 50px;
+
+	border: 1px solid black;
+	border-radius: 0.5rem;
+
+	transition: 0.4s;
+
+	background-color: red;
+
+	&:before {
+		position: absolute;
+
+		border-radius: 50%;
+		background-color: white;
+
+		content: "";
+
+		top: 4px;
+		left: 4px;
+		bottom: 4px;
+		width: 10px;
+	}
+}
+
+input:checked + .mcheckbox-thumb {
+	background-color: green;
+
+	&:before {
+		transform: translateX(calc(50px - 1.1rem));
+	}
+}
+
+input:indeterminate + .mcheckbox-thumb {
+	background-color: gray;
+}
+
+.minput-element-invalid {
+	border-color: red;
+}
+
+.minput-error {
+	font-size: 0.75rem;
+	color: red;
+
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
 </style>
 
 <template>
 	<div class="mcheckbox minput">
 		<label :for="id" :class="valid">
-			<span class="minput-label minput-label-long">{{ label }}</span>
+			<span class="minput-label">{{ label }}</span>
 			<input
 				type="checkbox"
 				:id="id"

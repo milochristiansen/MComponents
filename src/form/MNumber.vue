@@ -85,10 +85,6 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.minput-element-invalid {
-	border-color: red;
-}
-
 .minput-error {
 	font-size: 0.75rem;
 	color: red;
@@ -107,24 +103,22 @@ export default {
 		transition: all 0.2s;
 		touch-action: manipulation;
 	}
+}
 
-	input {
-		border: 1px solid gray;
-		border-radius: 2px;
-		padding: 10px;
+.minput-element {
+	border: 1px solid gray;
+	border-radius: 2px;
+	padding: 10px;
+
+	font-size: 1rem;
+	cursor: text;
+
+	&::placeholder {
+		opacity: 0;
+		transition: inherit;
 	}
 
-	input {
-		font-size: 1rem;
-		cursor: text;
-
-		&::placeholder {
-			opacity: 0;
-			transition: inherit;
-		}
-	}
-
-	input:focus {
+	&:focus {
 		outline: 0;
 
 		&::placeholder {
@@ -132,13 +126,7 @@ export default {
 		}
 	}
 
-	label {
-		padding-left: 5px;
-		font-size: 0.75rem;
-		width: 66.66%; // When the label is transformed to full size this is basically 100%
-	}
-
-	input:placeholder-shown + label {
+	&:placeholder-shown + label {
 		cursor: text;
 
 		white-space: nowrap;
@@ -149,11 +137,21 @@ export default {
 		transform: translate(0, 1.8rem) scale(1.25);
 	}
 
-	input:not(:placeholder-shown) + label,
-	input:focus + label {
+	&:not(:placeholder-shown) + label,
+	&:focus + label {
 		transform: translate(0, 0) scale(1);
 		cursor: pointer;
 	}
+}
+
+.minput-label {
+	padding-left: 5px;
+	font-size: 0.75rem;
+	width: 66.66%; // When the label is transformed to full size this is basically 100%
+}
+
+.minput-element-invalid {
+	border-color: red;
 }
 </style>
 
@@ -170,6 +168,6 @@ export default {
 			:class="valid"
 			:placeholder="placeholder"
 		/>
-		<label :for="id" class="minput-label minput-label-short">{{ label }}</label>
+		<label :for="id" class="minput-label">{{ label }}</label>
 	</div>
 </template>

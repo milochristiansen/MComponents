@@ -17,9 +17,6 @@ export default {
 			type: String,
 			default: ""
 		},
-		value: {
-			default: undefined
-		},
 		modelValue: {
 			default: ""
 		}
@@ -178,6 +175,97 @@ export default {
 </script>
 
 <style scoped lang="scss">
+.mdate {
+	display: flex;
+	flex-flow: column-reverse;
+
+	label,
+	input {
+		transition: all 0.2s;
+		touch-action: manipulation;
+	}
+}
+
+.minput-element {
+	border: 1px solid gray;
+	border-radius: 2px;
+	padding: 10px;
+
+	font-size: 1rem;
+	cursor: text;
+
+	&::placeholder {
+		opacity: 0;
+		transition: inherit;
+	}
+
+	&:focus {
+		outline: 0;
+
+		&::placeholder {
+			opacity: 1;
+		}
+	}
+
+	&:placeholder-shown + label {
+		cursor: text;
+
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+
+		transform-origin: left bottom;
+		transform: translate(0, 1.8rem) scale(1.25);
+	}
+
+	&:not(:placeholder-shown) + label,
+	&:focus + label {
+		transform: translate(0, 0) scale(1);
+		cursor: pointer;
+	}
+}
+
+.minput-label {
+	padding-left: 5px;
+	font-size: 0.75rem;
+	width: 66.66%; // When the label is transformed to full size this is basically 100%
+}
+
+.mdate {
+	position: relative;
+	line-height: 1;
+}
+
+.minput-mask {
+	padding-right: 10px;
+	font-weight: 500;
+	color: lightgray;
+	background-color: transparent;
+	pointer-events: none;
+	z-index: -1;
+
+	position: absolute;
+	left: 11px;
+	top: 25px;
+
+	opacity: 0;
+
+	i {
+		opacity: 0;
+	}
+}
+
+.minput-element {
+	background-color: transparent;
+	padding-right: 10px;
+	user-select: none;
+}
+
+.minput-element:not(:placeholder-shown) ~ span,
+.minput-element:focus ~ span {
+	opacity: 1;
+}
+
 .minput-element-invalid {
 	border-color: red;
 }
@@ -189,99 +277,6 @@ export default {
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
-}
-
-.mdate {
-	display: flex;
-	flex-flow: column-reverse;
-
-	label,
-	input {
-		transition: all 0.2s;
-		touch-action: manipulation;
-	}
-
-	input {
-		border: 1px solid gray;
-		border-radius: 2px;
-		padding: 10px;
-	}
-
-	input {
-		font-size: 1rem;
-		cursor: text;
-
-		&::placeholder {
-			opacity: 0;
-			transition: inherit;
-		}
-	}
-
-	input:focus {
-		outline: 0;
-
-		&::placeholder {
-			opacity: 1;
-		}
-	}
-
-	label {
-		padding-left: 5px;
-		font-size: 0.75rem;
-		width: 66.66%; // When the label is transformed to full size this is basically 100%
-	}
-
-	input:placeholder-shown + label {
-		cursor: text;
-
-		white-space: nowrap;
-		overflow: hidden;
-		text-overflow: ellipsis;
-
-		transform-origin: left bottom;
-		transform: translate(0, 1.8rem) scale(1.25);
-	}
-
-	input:not(:placeholder-shown) + label,
-	input:focus + label {
-		transform: translate(0, 0) scale(1);
-		cursor: pointer;
-	}
-}
-
-.mdate {
-	position: relative;
-	line-height: 1;
-
-	.minput-mask {
-		padding-right: 10px;
-		font-weight: 500;
-		color: lightgray;
-		background-color: transparent;
-		pointer-events: none;
-		z-index: -1;
-
-		position: absolute;
-		left: 11px;
-		top: 25px;
-
-		opacity: 0;
-
-		i {
-			opacity: 0;
-		}
-	}
-
-	input {
-		background-color: transparent;
-		padding-right: 10px;
-		user-select: none;
-	}
-
-	input:not(:placeholder-shown) ~ span,
-	input:focus ~ span {
-		opacity: 1;
-	}
 }
 </style>
 
@@ -300,7 +295,7 @@ export default {
 			placeholder=" "
 			maxlength="10"
 		/>
-		<label :for="id" class="minput-label minput-label-short">{{ label }}</label>
+		<label :for="id" class="minput-label">{{ label }}</label>
 		<span aria-hidden="true" class="minput-mask" ref="mask">
 			<i>{{ mask.entered }}</i>
 			{{ mask.shown }}
