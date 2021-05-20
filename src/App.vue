@@ -93,20 +93,6 @@ Button? Maybe, maybe not. Buttons are pretty simple to do vanilla. Probably a go
 
 Dropdown, especially for auto-complete entry. An evolution of the existing multi-select?
 
-Tool tips. Nice, big, easy-to-read ones.
-
-A loading spinner. Both as a stand alone sizable element and as a piece to use in other controls.
-
-Image container that shows a spinner while it is loading in instead of showing a partly loaded image.
-
-Path-style breadcrumb links
-
-Step displays (step 1, step 2, you are here kind of stuff, for sign up forms or whatever)
-
-Hideable page banners for user alerts.
-
-At some point we will want ad containers
-
 */
 
 export default {
