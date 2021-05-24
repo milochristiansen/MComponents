@@ -79,7 +79,17 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.minput-error {
+/*
+All the "wheres" in here are an experiment. where has a side effect of setting a selector's specificity to 0. This
+is desirable inside a component like this as it makes it much simpler to target bits with external CSS and have the
+external CSS always win.
+
+However, I'm not sure how good or bad of an idea this is (or even if I'm doing it properly), so I'm just testing
+it in the one component for now. If it ends up being useful then I'll probably do something similar everywhere in
+this library, otherwise I only have to strip it out of one place.
+*/
+
+:where(.minput-error) {
 	font-size: 0.75rem;
 	color: red;
 
@@ -88,18 +98,17 @@ export default {
 	text-overflow: ellipsis;
 }
 
-.mtext {
+:where(.mtext) {
 	display: flex;
 	flex-flow: column-reverse;
 
-	label,
-	input {
+	:where(label, input) {
 		transition: all 0.2s;
 		touch-action: manipulation;
 	}
 }
 
-.minput-element {
+:where(.minput-element) {
 	border: 1px solid gray;
 	border-radius: 2px;
 	padding: 10px;
@@ -120,7 +129,7 @@ export default {
 		}
 	}
 
-	&:placeholder-shown + label {
+	&:placeholder-shown + :where(label) {
 		cursor: text;
 
 		white-space: nowrap;
@@ -131,20 +140,20 @@ export default {
 		transform: translate(0, 1.9rem) scale(1.25);
 	}
 
-	&:not(:placeholder-shown) + label,
-	&:focus + label {
+	&:not(:placeholder-shown) + :where(label),
+	&:focus + :where(label) {
 		transform: translate(0, 0) scale(1);
 		cursor: pointer;
 	}
 }
 
-.minput-label {
+:where(.minput-label) {
 	padding-left: 5px;
 	font-size: 0.75rem;
 	width: 66.66%; // When the label is transformed to full size this is basically 100%
 }
 
-.minput-element-invalid {
+:where(.minput-element-invalid) {
 	border-color: red;
 }
 </style>
