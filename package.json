@@ -12,6 +12,7 @@
 		"leaflet": "^1.7.1",
 		"leaflet-gesture-handling": "^1.2.1",
 		"nanoid": "^3.1.23",
+		"prismjs": "^1.23.0",
 		"vee-validate": "^4.3.1",
 		"vue": "^3.0.11"
 	},

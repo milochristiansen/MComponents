@@ -3,15 +3,29 @@
 		<MAddress v-model="valAddress" />
 		<p>&nbsp;{{ valAddress }}</p>
 		<hr />
+
 		<MCheckbox :rules="notempty" label="Yes or No?" v-model="valCheckbox" />
 		<p>&nbsp;{{ valCheckbox }}</p>
 		<hr />
+
+		<MCode
+			:rules="notempty"
+			label="Enter some Markdown"
+			placeholder="Example placeholder"
+			language="markdown"
+			v-model="valCode"
+		/>
+		<pre>&nbsp;{{ valCode }}</pre>
+		<hr />
+
 		<MDate :rules="notempty" label="Enter a Date" v-model="valDate" />
 		<p>&nbsp;{{ valDate }}</p>
 		<hr />
+
 		<MFile :rules="notempty" label="Upload Something" v-model="valFile" />
 		<p>&nbsp;{{ valFile }}</p>
 		<hr />
+
 		<MMultiSelect
 			:rules="notempty"
 			label="Select Multiple Somethings"
@@ -24,15 +38,19 @@
 		/>
 		<p>&nbsp;{{ valMultiSelect }}</p>
 		<hr />
+
 		<MNumber :rules="notempty" label="Enter a Number" placeholder="123456567890" v-model="valNumber" />
 		<p>&nbsp;{{ valNumber }}</p>
 		<hr />
+
 		<MPhone :rules="notempty" label="Enter a Phone Number" v-model="valPhone" />
 		<p>&nbsp;{{ valPhone }}</p>
 		<hr />
+
 		<MRange :rules="notempty" label="Select a Number" v-model="valRange" :list="[2, 4, { k: '50%', v: 5 }, 6, 8]" />
 		<p>&nbsp;{{ valRange }}</p>
 		<hr />
+
 		<MSelect :rules="notempty" label="Pick an Option" v-model="valSelect">
 			<option value="a">A</option>
 			<option value="b">B</option>
@@ -40,18 +58,24 @@
 		</MSelect>
 		<p>&nbsp;{{ valSelect }}</p>
 		<hr />
+
 		<MText :rules="notempty" label="Enter Some Text" placeholder="Some Text" v-model="valText" />
 		<p>&nbsp;{{ valText }}</p>
 		<hr />
+
 		<input type="submit" value="Trigger Submit" />
 
 		<button @click="setvalue">Set</button>
 	</Form>
+
 	<hr />
+
 	<MLeafletMap />
 	<hr />
+
 	<MPagination :current="6" :end="100" />
 	<hr />
+
 	<MSlider :speed="7000" :autoplay="true">
 		<div class="slide"><img src="http://placekitten.com/500/250" /></div>
 		<div class="slide"><img src="http://placekitten.com/501/250" /></div>
@@ -59,6 +83,7 @@
 		<div class="slide"><img src="http://placekitten.com/501/251" /></div>
 	</MSlider>
 	<hr />
+
 	<MTabs>
 		<template #labels>
 			<span>1</span>
@@ -82,7 +107,19 @@
 <script>
 import { Form } from "vee-validate";
 
-import { MAddress, MCheckbox, MDate, MFile, MMultiSelect, MNumber, MPhone, MRange, MSelect, MText } from "./form";
+import {
+	MAddress,
+	MCheckbox,
+	MCode,
+	MDate,
+	MFile,
+	MMultiSelect,
+	MNumber,
+	MPhone,
+	MRange,
+	MSelect,
+	MText
+} from "./form";
 
 import { MLeafletMap, MPagination, MSlider, MTabs } from "./misc";
 
@@ -103,6 +140,7 @@ export default {
 
 		MAddress,
 		MCheckbox,
+		MCode,
 		MDate,
 		MFile,
 		MMultiSelect,
@@ -121,13 +159,14 @@ export default {
 	data: () => ({
 		valAddress: null,
 		valCheckbox: null, // null, true, false
+		valCode: "",
 		valDate: "",
 		valFile: null,
 		valMultiSelect: null,
 		valNumber: null,
 		valPhone: "",
 		valRange: 0,
-		valSelect: "", // Must be a the empty string or the label doesn't show properly.
+		valSelect: "", // Must be the empty string or the label doesn't show properly.
 		valText: ""
 	}),
 
@@ -144,6 +183,7 @@ export default {
 		setvalue() {
 			this.valAddress = { line1: "1234 Some Street", line2: "", city: "Someville", state: "Ohio", zip: "12345" };
 			this.valCheckbox = true;
+			this.valCode = "*example* **TEXT**";
 			this.valDate = "2020-11-22";
 			this.valFile = null; // File inputs cannot have a value set.
 			this.valMultiSelect = ["2"];
