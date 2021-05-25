@@ -21,9 +21,6 @@ export default {
 			type: String,
 			default: " " // Not a typo!
 		},
-		value: {
-			default: undefined
-		},
 		modelValue: {
 			default: ""
 		}

@@ -17,9 +17,6 @@ export default {
 			type: String,
 			default: ""
 		},
-		value: {
-			default: undefined
-		},
 		modelValue: {
 			default: ""
 		}

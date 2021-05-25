@@ -25,9 +25,6 @@ export default {
 			type: Boolean,
 			default: false
 		},
-		value: {
-			default: undefined
-		},
 		modelValue: {
 			default: []
 		}
