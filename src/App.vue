@@ -1,4 +1,9 @@
 <template>
+	<MStickyHeader>
+		<h1>Component Testing</h1>
+		<div class="cat"></div>
+	</MStickyHeader>
+
 	<Form :submit="submit">
 		<MAddress v-model="valAddress" />
 		<p>&nbsp;{{ valAddress }}</p>
@@ -121,7 +126,7 @@ import {
 	MText
 } from "./form";
 
-import { MLeafletMap, MPagination, MSlider, MTabs } from "./misc";
+import { MLeafletMap, MPagination, MSlider, MStickyHeader, MTabs } from "./misc";
 
 /*
 TODO:
@@ -153,6 +158,7 @@ export default {
 		MLeafletMap,
 		MPagination,
 		MSlider,
+		MStickyHeader,
 		MTabs
 	},
 
@@ -216,6 +222,38 @@ hr {
 		img {
 			margin-left: auto;
 			margin-right: auto;
+		}
+	}
+}
+
+.mstickyheader {
+	z-index: 2;
+
+	h1 {
+		font-size: 3rem;
+		background-color: black;
+		color: white;
+
+		margin-top: 0;
+		margin-bottom: 0;
+
+		transition-duration: 0.5s;
+	}
+
+	.cat {
+		background-image: url(http://placekitten.com/1500/500);
+		background-size: cover;
+		transition-duration: 0.5s;
+		height: 500px;
+	}
+
+	&-stuck {
+		h1 {
+			font-size: 1.5rem;
+		}
+
+		.cat {
+			height: 0;
 		}
 	}
 }
