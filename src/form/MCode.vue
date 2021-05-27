@@ -144,12 +144,12 @@ export default {
 
 	position: relative;
 
-	height: calc(var(--height) + 20px);
+	height: calc(var(--height) + 2px);
 	&-interactive,
 	&-display {
 		padding: 10px;
 		border: 0;
-		width: calc(100% - 20px);
+		width: 100%;
 		height: var(--height);
 
 		position: absolute;

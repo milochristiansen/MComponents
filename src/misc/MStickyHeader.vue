@@ -16,6 +16,9 @@ flawlessly and if not you still get vibration. How large is "large enough"? It s
 header is? The smallest size I found that worked for some header content was 3px. Other headers needed more. But, if
 the height is just set to 100% and the div moved way off the left side of the page it doesn't really matter. Too large
 works just as well as just right.
+
+Note: This can completely break if the viewport extends off the top of the screen, which can happen on mobile if the
+page is too *wide* to fit. So horizontal scrollbars are *even worse* than normal when using this.
 */
 
 export default {
@@ -27,7 +30,7 @@ export default {
 
 	computed: {
 		stuck() {
-			return this.isstuck ? "mstickyheader mstickyheader-stuck" : "mstickyheader";
+			return this.isstuck ? "mstickyheader-content mstickyheader-content-stuck" : "mstickyheader-content";
 		}
 	},
 
@@ -56,6 +59,8 @@ export default {
 	position: sticky;
 	top: -1px;
 
+	z-index: 10001;
+
 	&-guard {
 		height: 1px;
 		width: 100%;
@@ -67,8 +72,10 @@ export default {
 
 <template>
 	<div class="mstickyheader-magic"></div>
-	<header :class="stuck" ref="header">
+	<header class="mstickyheader" ref="header">
 		<div class="mstickyheader-guard"></div>
-		<slot></slot>
+		<div :class="stuck">
+			<slot></slot>
+		</div>
 	</header>
 </template>

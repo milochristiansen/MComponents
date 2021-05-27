@@ -104,7 +104,7 @@ export default {
 	border: 1px solid gray;
 	border-radius: 2px;
 
-	width: calc(100% - 2px - 10px);
+	width: 100%;
 
 	margin-top: 0.75rem;
 

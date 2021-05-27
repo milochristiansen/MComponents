@@ -103,7 +103,7 @@ export default {
 	border: 1px solid gray;
 	border-radius: 2px;
 
-	width: calc(100% - 2px - 10px);
+	width: 100%;
 
 	padding: 10px;
 	padding-left: 5px;

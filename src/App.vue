@@ -78,7 +78,7 @@
 	<MLeafletMap />
 	<hr />
 
-	<MPagination :current="6" :end="100" />
+	<MPagination :current="6" :end="100" :buttons="4" />
 	<hr />
 
 	<MSlider :speed="7000" :autoplay="true">
@@ -205,6 +205,20 @@ export default {
 </script>
 
 <style lang="scss">
+html {
+	min-height: 100vh;
+}
+body {
+	min-height: 100vh;
+
+	margin: 0 auto;
+	float: none;
+}
+* {
+	/* I always set this in my app-wide CSS, so this component library expects it. */
+	box-sizing: border-box;
+}
+
 hr {
 	width: 100%;
 	border-top: 5px solid black;
@@ -226,9 +240,7 @@ hr {
 	}
 }
 
-.mstickyheader {
-	z-index: 2;
-
+.mstickyheader-content {
 	h1 {
 		font-size: 3rem;
 		background-color: black;
@@ -244,7 +256,12 @@ hr {
 		background-image: url(http://placekitten.com/1500/500);
 		background-size: cover;
 		transition-duration: 0.5s;
-		height: 500px;
+
+		width: 100%;
+		aspect-ratio: 2 / 1;
+
+		margin-right: auto;
+		margin-left: auto;
 	}
 
 	&-stuck {
@@ -253,7 +270,7 @@ hr {
 		}
 
 		.cat {
-			height: 0;
+			width: 0;
 		}
 	}
 }
