@@ -107,6 +107,24 @@
 			</div>
 		</template>
 	</MTabs>
+	<hr />
+
+	<MMarkdown
+		src="
+## Markdown Document
+
+This is some *Markdown* text.
+
+You can do all kinds of fun stuff in here, such as lists:
+
+* Look Ma!
+* No cumbersome tags!
+
+[Links](https://commonmark.org/) work perfectly, of course.
+
+This particular component is *not* safe for displaying user input! Output is **NOT** sanitized!
+	"
+	/>
 </template>
 
 <script>
@@ -126,7 +144,7 @@ import {
 	MText
 } from "./form";
 
-import { MLeafletMap, MPagination, MSlider, MStickyHeader, MTabs } from "./misc";
+import { MLeafletMap, MPagination, MSlider, MStickyHeader, MTabs, MMarkdown } from "./misc";
 
 /*
 TODO:
@@ -159,7 +177,8 @@ export default {
 		MPagination,
 		MSlider,
 		MStickyHeader,
-		MTabs
+		MTabs,
+		MMarkdown
 	},
 
 	data: () => ({
@@ -253,12 +272,11 @@ hr {
 	}
 
 	.cat {
-		background-image: url(http://placekitten.com/1500/500);
+		background-image: url(http://placekitten.com/1000/250);
 		background-size: cover;
 		transition-duration: 0.5s;
 
-		width: 100%;
-		aspect-ratio: 2 / 1;
+		aspect-ratio: 4 / 1;
 
 		margin-right: auto;
 		margin-left: auto;
