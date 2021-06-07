@@ -26,8 +26,10 @@ export default {
 		html: ""
 	}),
 
-	mounted() {
-		this.html = marked(this.src);
+	watch: {
+		src() {
+			this.html = marked(this.src);
+		}
 	}
 };
 </script>

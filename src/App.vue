@@ -109,22 +109,7 @@
 	</MTabs>
 	<hr />
 
-	<MMarkdown
-		src="
-## Markdown Document
-
-This is some *Markdown* text.
-
-You can do all kinds of fun stuff in here, such as lists:
-
-* Look Ma!
-* No cumbersome tags!
-
-[Links](https://commonmark.org/) work perfectly, of course.
-
-This particular component is *not* safe for displaying user input! Output is **NOT** sanitized!
-	"
-	/>
+	<MMarkdown :src="valCode" />
 </template>
 
 <script>
@@ -208,7 +193,20 @@ export default {
 		setvalue() {
 			this.valAddress = { line1: "1234 Some Street", line2: "", city: "Someville", state: "Ohio", zip: "12345" };
 			this.valCheckbox = true;
-			this.valCode = "*example* **TEXT**";
+			this.valCode = `
+## Markdown Document
+
+This is some *Markdown* text (shared between the editor and MD renderer components).
+
+You can do all kinds of fun stuff in here, such as lists:
+
+* Look Ma!
+* No cumbersome tags!
+
+[Links](https://commonmark.org/) work perfectly, of course.
+
+The renderer component is *not* safe for displaying user input! Output is **NOT** sanitized!
+`.trim();
 			this.valDate = "2020-11-22";
 			this.valFile = null; // File inputs cannot have a value set.
 			this.valMultiSelect = ["2"];
