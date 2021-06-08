@@ -97,7 +97,7 @@ export default {
 			}
 		},
 		code() {
-			return Prism.highlight(this.modeldata, Prism.languages[this.language], this.language);
+			return Prism.highlight(this.modeldata + "\n", Prism.languages[this.language], this.language);
 		},
 		valid() {
 			return this.errorMessage === undefined
