@@ -74,8 +74,18 @@
 	</Form>
 
 	<hr />
+	<p>
+		Imagine this is a long paragraph.<MFootnote>It really isn't, but whatever.</MFootnote> It goes on and on
+		forever, unbroken.<MFootnote>No, no it doesn't.</MFootnote> The longest paragraph you have ever seen.<MFootnote
+			>Nope.</MFootnote
+		>
+	</p>
+	<hr />
 
 	<MLeafletMap />
+	<hr />
+
+	<MMarkdown :src="valCode" />
 	<hr />
 
 	<MPagination :current="6" :end="100" :buttons="4" />
@@ -107,9 +117,6 @@
 			</div>
 		</template>
 	</MTabs>
-	<hr />
-
-	<MMarkdown :src="valCode" />
 </template>
 
 <script>
@@ -129,7 +136,7 @@ import {
 	MText
 } from "./form";
 
-import { MLeafletMap, MPagination, MSlider, MStickyHeader, MTabs, MMarkdown } from "./misc";
+import { MFootnote, MLeafletMap, MMarkdown, MPagination, MSlider, MStickyHeader, MTabs } from "./misc";
 
 /*
 TODO:
@@ -158,12 +165,13 @@ export default {
 		MSelect,
 		MText,
 
+		MFootnote,
 		MLeafletMap,
+		MMarkdown,
 		MPagination,
 		MSlider,
 		MStickyHeader,
-		MTabs,
-		MMarkdown
+		MTabs
 	},
 
 	data: () => ({
