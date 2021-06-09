@@ -19,6 +19,11 @@ export default {
 		src: {
 			type: String,
 			default: ""
+		},
+		filter: {
+			// This needs to be a function taking a DOM fragment and returning another (or the same) DOM fragment.
+			// Use to sanitize output or do other filtering.
+			type: Function
 		}
 	},
 
@@ -28,6 +33,10 @@ export default {
 
 	watch: {
 		src() {
+			if (this.filter != null || this.filter != undefined) {
+				this.html = this.filter(marked(this.src));
+				return;
+			}
 			this.html = marked(this.src);
 		}
 	}
