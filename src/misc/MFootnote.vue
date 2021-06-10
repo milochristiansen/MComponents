@@ -8,7 +8,7 @@ body {
 	display: none;
 
 	&:checked {
-		& + .mfootnote-label {
+		& + &-label {
 			color: red;
 		}
 	}

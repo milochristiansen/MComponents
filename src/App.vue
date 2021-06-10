@@ -76,9 +76,8 @@
 	<hr />
 	<p>
 		Imagine this is a long paragraph.<MFootnote>It really isn't, but whatever.</MFootnote> It goes on and on
-		forever, unbroken.<MFootnote>No, no it doesn't.</MFootnote> The longest paragraph you have ever seen.<MFootnote
-			>Nope.</MFootnote
-		>
+		forever, unbroken.<MFootnote>No, no it doesn't.</MFootnote> The longest paragraph you have ever seen.
+		<MFootnote>Nope.</MFootnote>
 	</p>
 	<hr />
 
