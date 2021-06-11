@@ -257,6 +257,13 @@ hr {
 	border-right: none;
 }
 
+// On mobile the sticky header breaks if the page can be scrolled horizontally.
+// I think this is due to some kind of viewport scaling?
+pre {
+	max-width: 100%;
+	overflow-x: hidden;
+}
+
 .mslider {
 	width: 50%;
 	margin-left: auto;
