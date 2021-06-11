@@ -33,12 +33,26 @@
 
 			border-top: 0.3em solid black;
 			border-bottom: 0.3em solid black;
+
+			transition: transform 0.3s ease;
+			transition: border-bottom-color 0.3s ease;
 		}
 		&:before {
 			margin-top: 0.3em;
 		}
 		&:after {
 			border-top: none;
+		}
+
+		.mmobilemenu-magic:checked ~ & {
+			&:before {
+				border-bottom-color: transparent;
+				transition: border-bottom-color 0s;
+				transform: rotate(45deg) translateY(0.75em);
+			}
+			&:after {
+				transform: rotate(-45deg) translateY(-0.75em);
+			}
 		}
 	}
 
