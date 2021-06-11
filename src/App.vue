@@ -1,6 +1,11 @@
 <template>
 	<MStickyHeader>
-		<h1>Component Testing</h1>
+		<div class="bar">
+			<MMobileMenu>
+				<p>In real apps a navigation menu goes here.</p>
+			</MMobileMenu>
+			<h1>Component Testing</h1>
+		</div>
 		<div class="cat"></div>
 	</MStickyHeader>
 
@@ -135,7 +140,7 @@ import {
 	MText
 } from "./form";
 
-import { MFootnote, MLeafletMap, MMarkdown, MPagination, MSlider, MStickyHeader, MTabs } from "./misc";
+import { MFootnote, MLeafletMap, MMarkdown, MMobileMenu, MPagination, MSlider, MStickyHeader, MTabs } from "./misc";
 
 /*
 TODO:
@@ -167,6 +172,7 @@ export default {
 		MFootnote,
 		MLeafletMap,
 		MMarkdown,
+		MMobileMenu,
 		MPagination,
 		MSlider,
 		MStickyHeader,
@@ -264,16 +270,35 @@ hr {
 	}
 }
 
+.mstickyheader .mstickyheader-guard {
+	background-color: black;
+}
 .mstickyheader-content {
-	h1 {
-		font-size: 3rem;
-		background-color: black;
-		color: white;
+	.bar {
+		display: flex;
+		flex-direction: row;
 
-		margin-top: 0;
-		margin-bottom: 0;
+		background-color: white;
 
-		transition-duration: 0.5s;
+		.mmobilemenu {
+			transition-duration: 0.5s;
+
+			margin-top: auto;
+			margin-bottom: auto;
+		}
+
+		h1 {
+			font-size: 3rem;
+			background-color: black;
+			color: white;
+
+			flex-grow: 1;
+
+			margin-top: 0;
+			margin-bottom: 0;
+
+			transition-duration: 0.5s;
+		}
 	}
 
 	.cat {
@@ -288,8 +313,14 @@ hr {
 	}
 
 	&-stuck {
-		h1 {
-			font-size: 1.5rem;
+		.bar {
+			h1 {
+				font-size: 1.5rem;
+			}
+
+			.mmobilemenu-button {
+				font-size: 0.5rem;
+			}
 		}
 
 		.cat {
