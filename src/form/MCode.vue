@@ -71,7 +71,7 @@ export default {
 		},
 		syncScroll() {
 			this.$refs.display.scrollTop = this.$refs.edit.scrollTop;
-			this.$refs.display.scrollleft = this.$refs.edit.scrollleft;
+			this.$refs.display.scrollLeft = this.$refs.edit.scrollLeft;
 		},
 		checkTab(evnt) {
 			if (evnt.keyCode == 9) {
