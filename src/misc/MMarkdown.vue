@@ -33,6 +33,16 @@ export default {
 
 	watch: {
 		src() {
+			this.update()
+		}
+	},
+
+	mounted() {
+		this.update()
+	},
+
+	methods: {
+		update() {
 			if (this.filter != null || this.filter != undefined) {
 				this.html = this.filter(marked(this.src));
 				return;
