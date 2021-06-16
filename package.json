@@ -1,10 +1,11 @@
 {
-	"name": "ecore",
+	"name": "MComponents",
 	"version": "0.1.0",
 	"private": true,
+	"main": "./dist/MComponents.common.js",
 	"scripts": {
-		"serve": "vue-cli-service serve",
-		"build": "vue-cli-service build",
+		"serve": "vue-cli-service serve dev/main.js",
+		"build": "vue-cli-service build --target lib src/entry.esm.js",
 		"lint": "vue-cli-service lint"
 	},
 	"dependencies": {

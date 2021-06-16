@@ -127,6 +127,7 @@
 import { Form } from "vee-validate";
 
 import {
+	// Form
 	MAddress,
 	MCheckbox,
 	MCode,
@@ -137,10 +138,18 @@ import {
 	MPhone,
 	MRange,
 	MSelect,
-	MText
-} from "./form";
+	MText,
 
-import { MFootnote, MLeafletMap, MMarkdown, MMobileMenu, MPagination, MSlider, MStickyHeader, MTabs } from "./misc";
+	// Misc
+	MFootnote,
+	MLeafletMap,
+	MMarkdown,
+	MMobileMenu,
+	MPagination,
+	MSlider,
+	MStickyHeader,
+	MTabs
+} from "@/components";
 
 /*
 TODO:

@@ -1,14 +1,4 @@
-
-export {
-	MFootnote,
-	MLeafletMap,
-	MMarkdown,
-	MMobileMenu,
-	MPagination,
-	MSlider,
-	MStickyHeader,
-	MTabs
-} from "./misc";
+export { MFootnote, MLeafletMap, MMarkdown, MMobileMenu, MPagination, MSlider, MStickyHeader, MTabs } from "./misc";
 
 export {
 	MAddress,

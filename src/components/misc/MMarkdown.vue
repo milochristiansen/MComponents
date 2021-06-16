@@ -33,12 +33,12 @@ export default {
 
 	watch: {
 		src() {
-			this.update()
+			this.update();
 		}
 	},
 
 	mounted() {
-		this.update()
+		this.update();
 	},
 
 	methods: {
