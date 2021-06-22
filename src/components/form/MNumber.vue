@@ -10,6 +10,10 @@ export default {
 			type: String,
 			default: ""
 		},
+		id: {
+			type: String,
+			default: ""
+		},
 		rules: {
 			type: Function
 		},
@@ -27,15 +31,15 @@ export default {
 	},
 
 	setup(props) {
-		let id = nanoid(5);
+		let rid = props.id == "" ? nanoid(5) : props.id;
 
-		const { value, errorMessage, handleChange } = useField(id, props.rules || (() => true), {
+		const { value, errorMessage, handleChange } = useField(rid, props.rules || (() => true), {
 			initialValue: props.modelValue,
 			type: props.type
 		});
 
 		return {
-			id,
+			rid,
 			errorMessage,
 			handleChange,
 			validateValue: value
@@ -157,7 +161,7 @@ export default {
 		<span class="minput-error">&nbsp;{{ errorMessage }}</span>
 		<input
 			type="number"
-			:id="id"
+			:id="rid"
 			:name="name"
 			@change="onInput"
 			@blur="onBlur"
@@ -165,6 +169,6 @@ export default {
 			:class="valid"
 			:placeholder="placeholder"
 		/>
-		<label :for="id" class="minput-label">{{ label }}</label>
+		<label :for="rid" class="minput-label">{{ label }}</label>
 	</div>
 </template>

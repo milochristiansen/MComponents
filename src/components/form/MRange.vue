@@ -10,6 +10,10 @@ export default {
 			type: String,
 			default: ""
 		},
+		id: {
+			type: String,
+			default: ""
+		},
 		rules: {
 			type: Function
 		},
@@ -41,16 +45,16 @@ export default {
 	},
 
 	setup(props) {
-		let id = nanoid(5);
+		let rid = props.id == "" ? nanoid(5) : props.id;
 		let listid = nanoid(5);
 
-		const { value, errorMessage, handleChange } = useField(id, props.rules || (() => true), {
+		const { value, errorMessage, handleChange } = useField(rid, props.rules || (() => true), {
 			initialValue: props.modelValue,
 			type: props.type
 		});
 
 		return {
-			id,
+			rid,
 			listid,
 			errorMessage,
 			handleChange,
@@ -136,10 +140,10 @@ export default {
 
 <template>
 	<div class="mrange minput">
-		<label :for="id" class="minput-label">{{ label }}</label>
+		<label :for="rid" class="minput-label">{{ label }}</label>
 		<input
 			type="range"
-			:id="id"
+			:id="rid"
 			:name="name"
 			@change="onInput"
 			@blur="onBlur"

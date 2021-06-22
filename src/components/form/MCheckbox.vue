@@ -10,6 +10,10 @@ export default {
 			type: String,
 			default: ""
 		},
+		id: {
+			type: String,
+			default: ""
+		},
 		rules: {
 			type: Function
 		},
@@ -23,14 +27,14 @@ export default {
 	},
 
 	setup(props) {
-		let id = nanoid(5);
+		let rid = props.id == "" ? nanoid(5) : props.id;
 
-		const { value, errorMessage, handleChange } = useField(id, props.rules || (() => true), {
+		const { value, errorMessage, handleChange } = useField(rid, props.rules || (() => true), {
 			initialValue: props.modelValue,
 			type: props.type
 		});
 		return {
-			id,
+			rid,
 			errorMessage,
 			handleChange,
 			validateValue: value
@@ -178,11 +182,11 @@ input:indeterminate + .mcheckbox-thumb {
 
 <template>
 	<div class="mcheckbox minput">
-		<label :for="id" :class="valid">
+		<label :for="rid" :class="valid">
 			<span class="minput-label">{{ label }}</span>
 			<input
 				type="checkbox"
-				:id="id"
+				:id="rid"
 				:name="name"
 				@change="onInput"
 				@blur="onBlur"
