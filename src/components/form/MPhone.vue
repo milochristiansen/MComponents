@@ -53,6 +53,10 @@ export default {
 			this.validateValue = value;
 		},
 		updateMask() {
+			let cursor = -1;
+			if (this.$refs.input) {
+				cursor = this.$refs.input.selectionStart;
+			}
 			if (this.modelValue == null || this.modelValue == undefined || this.modelValue == "") {
 				this.mask.entered = "";
 				this.mask.shown = "(___) ___-____";
@@ -79,8 +83,48 @@ export default {
 				split = v.length + 4;
 			}
 
+			let backspacing = false;
+			if (this.mask.entered && this.mask.entered.length > split) {
+				backspacing = true;
+			}
+
 			this.mask.entered = mask.slice(0, split);
 			this.mask.shown = mask.slice(split);
+
+			if (cursor != -1) {
+				/* eslint-disable prettier/prettier */
+				if (!backspacing) {
+					switch (cursor) {
+					case 1:
+						cursor = 2;
+						break;
+					case 5:
+						cursor = 7;
+						break;
+					case 10:
+						cursor = 11;
+					}
+				} else {
+					switch (cursor) {
+					case 10:
+						cursor = 9;
+						break;
+					case 6:
+						cursor = 4;
+						break;
+					case 1:
+						cursor = 2;
+						break;
+					}
+				}
+				/* eslint-enable prettier/prettier */
+
+				// This avoids a race condition between setting the cursor and setting the value,
+				// a race condition that the cursor mostly loses.
+				this.$nextTick(() => {
+					this.$refs.input.setSelectionRange(cursor, cursor);
+				});
+			}
 		}
 	},
 
@@ -180,7 +224,13 @@ export default {
 }
 
 .minput-mask {
-	padding-right: 10px;
+	border: 1px solid transparent;
+	border-radius: 2px;
+	padding: 10px;
+
+	display: inline-block;
+
+	font-size: 1rem;
 	font-weight: 500;
 	color: lightgray;
 	background-color: transparent;
@@ -188,8 +238,10 @@ export default {
 	z-index: -1;
 
 	position: absolute;
-	left: 11px;
-	top: 25px;
+	top: 0.75rem;
+	bottom: 0.75rem;
+
+	line-height: 1.1;
 
 	opacity: 0;
 
@@ -225,10 +277,6 @@ export default {
 
 <template>
 	<div class="mphone minput">
-		<span aria-hidden="true" class="minput-mask" ref="mask">
-			<i>{{ mask.entered }}</i>
-			{{ mask.shown }}
-		</span>
 		<span class="minput-error">&nbsp;{{ errorMessage }}</span>
 		<input
 			type="tel"
@@ -240,11 +288,12 @@ export default {
 			:class="valid"
 			placeholder=" "
 			maxlength="14"
+			ref="input"
 		/>
 		<label :for="rid" class="minput-label">{{ label }}</label>
 		<span aria-hidden="true" class="minput-mask" ref="mask">
-			<i>{{ mask.entered }}</i>
-			{{ mask.shown }}
+			<i>{{ mask.entered }}</i
+			>{{ mask.shown }}
 		</span>
 	</div>
 </template>
